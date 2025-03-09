@@ -140,7 +140,7 @@ export default function Game() {
                 key={num}
                 onClick={() => startGame(num as SubtractionTest)}
                 size="lg"
-                className="text-xl h-16"
+                className="text-xl h-16 text-black hover:text-black"
               >
                 Minus {num}
               </Button>
