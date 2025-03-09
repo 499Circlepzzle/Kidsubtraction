@@ -111,7 +111,7 @@ export default function Game() {
       currentProblem: problem,
       timeLeft: getTimeForLevel(nextLevel)
     });
-    speak(`${problem.first} minus ${nextProblem.second}`);
+    speak(`${problem.first} minus ${problem.second}`);
   };
 
   if (!gameState?.gameStarted) {
