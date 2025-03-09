@@ -29,7 +29,7 @@ export default function Game() {
     setLocation('/');
   }, [setLocation]);
 
-  const startGame = async (test: SubtractionTest) => {
+  const startGame = (test: SubtractionTest) => {
     try {
       const state = getInitialGameState(test);
       const problem = generateProblem(test, []);
@@ -39,27 +39,23 @@ export default function Game() {
         gameStarted: true,
         usedNumbers: [problem.first]
       });
-      await speak(`${problem.first} minus ${problem.second}`);
+      speak(`${problem.first} minus ${problem.second}`);
     } catch (error) {
       console.error('Error starting game:', error);
     }
   };
 
-  const handleAnswer = useCallback(async (answer: number) => {
+  const handleAnswer = useCallback((answer: number) => {
     if (!gameState?.currentProblem) return;
 
     const isCorrect = answer === gameState.currentProblem.answer;
     const currentScore = gameState.scores[gameState.level];
 
-    try {
-      if (isCorrect) {
-        await speak('Good!');
-        await playSound('correct');
-      } else {
-        await playSound('incorrect');
-      }
-    } catch (error) {
-      console.error('Error playing feedback:', error);
+    if (isCorrect) {
+      speak('Good!');
+      setTimeout(() => playSound('correct'), 800); // Play sound after voice
+    } else {
+      playSound('incorrect');
     }
 
     const newScore = {
@@ -93,7 +89,7 @@ export default function Game() {
             usedNumbers: [...prev.usedNumbers, nextProblem.first]
           };
         });
-        await speak(`${nextProblem.first} minus ${nextProblem.second}`);
+        speak(`${nextProblem.first} minus ${nextProblem.second}`);
       } catch (error) {
         console.error('Error generating next problem:', error);
       }
