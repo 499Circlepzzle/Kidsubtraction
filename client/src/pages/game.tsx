@@ -31,8 +31,13 @@ export default function Game() {
 
   const startGame = (test: SubtractionTest) => {
     const state = getInitialGameState(test);
-    const problem = generateProblem(test);
-    setGameState({ ...state, currentProblem: problem, gameStarted: true });
+    const problem = generateProblem(test, []);
+    setGameState({
+      ...state,
+      currentProblem: problem,
+      gameStarted: true,
+      usedNumbers: [problem.first]
+    });
     speak(`${problem.first} minus ${problem.second}`);
   };
 
@@ -69,13 +74,14 @@ export default function Game() {
     if (newScore.total >= PROBLEMS_PER_LEVEL) {
       setShowingScore(true);
     } else {
-      const nextProblem = generateProblem(gameState.test);
+      const nextProblem = generateProblem(gameState.test, gameState.usedNumbers);
       setGameState(prev => {
         if (!prev) return prev;
         return {
           ...prev,
           currentProblem: nextProblem,
-          timeLeft: getTimeForLevel(prev.level)
+          timeLeft: getTimeForLevel(prev.level),
+          usedNumbers: [...prev.usedNumbers, nextProblem.first]
         };
       });
       speak(`${nextProblem.first} minus ${nextProblem.second}`);
@@ -102,14 +108,15 @@ export default function Game() {
     if (!gameState) return;
 
     const nextLevel = (gameState.level + 1) as GameLevel;
-    const problem = generateProblem(gameState.test);
+    const problem = generateProblem(gameState.test, []);  // Reset used numbers for new level
 
     setShowingScore(false);
     setGameState({
       ...gameState,
       level: nextLevel,
       currentProblem: problem,
-      timeLeft: getTimeForLevel(nextLevel)
+      timeLeft: getTimeForLevel(nextLevel),
+      usedNumbers: [problem.first]  // Reset used numbers, add first problem's number
     });
     speak(`${problem.first} minus ${problem.second}`);
   };

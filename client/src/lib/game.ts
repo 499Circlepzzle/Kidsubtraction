@@ -21,6 +21,7 @@ export interface GameState {
   timeLeft: number;
   gameStarted: boolean;
   gameEnded: boolean;
+  usedNumbers: number[]; // Track used numbers
 }
 
 const BASE_NUMBERS = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
@@ -37,11 +38,18 @@ export const getTimeForLevel = (level: GameLevel): number => {
   return times[level];
 };
 
-export const generateProblem = (subtractor: SubtractionTest): Problem => {
-  const availableNumbers = [...BASE_NUMBERS];
+export const generateProblem = (subtractor: SubtractionTest, usedNumbers: number[]): Problem => {
+  // Filter out already used numbers
+  const availableNumbers = BASE_NUMBERS.filter(num => !usedNumbers.includes(num));
+
+  // If all numbers have been used, this shouldn't happen in normal gameplay
+  if (availableNumbers.length === 0) {
+    throw new Error('No more available numbers for this level');
+  }
+
   const randomIndex = Math.floor(Math.random() * availableNumbers.length);
   const first = availableNumbers[randomIndex];
-  
+
   return {
     first,
     second: subtractor,
@@ -71,6 +79,7 @@ export const getInitialGameState = (test: SubtractionTest): GameState => {
     scores: initialScores,
     timeLeft: 12,
     gameStarted: false,
-    gameEnded: false
+    gameEnded: false,
+    usedNumbers: [] // Initialize empty array of used numbers
   };
 };
