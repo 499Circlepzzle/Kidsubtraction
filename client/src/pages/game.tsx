@@ -41,17 +41,17 @@ export default function Game() {
     speak(`${problem.first} minus ${problem.second}`);
   };
 
-  const handleAnswer = useCallback((answer: number) => {
+  const handleAnswer = useCallback(async (answer: number) => {
     if (!gameState?.currentProblem) return;
 
     const isCorrect = answer === gameState.currentProblem.answer;
     const currentScore = gameState.scores[gameState.level];
 
     if (isCorrect) {
-      speak('Good!');
-      setTimeout(() => playSound('correct'), 500); // Play sound after speaking
+      await speak('Good!');
+      await playSound('correct');
     } else {
-      playSound('incorrect');
+      await playSound('incorrect');
     }
 
     const newScore = {

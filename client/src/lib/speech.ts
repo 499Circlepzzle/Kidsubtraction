@@ -2,7 +2,10 @@ const synth = window.speechSynthesis;
 
 export const speak = (text: string) => {
   try {
-    if (!synth) return;
+    if (!synth) {
+      console.warn('Speech synthesis not available');
+      return;
+    }
 
     // Cancel any ongoing speech
     synth.cancel();
@@ -10,7 +13,14 @@ export const speak = (text: string) => {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 0.9;
     utterance.pitch = 1.0;
-    synth.speak(utterance);
+    utterance.volume = 1.0;
+    utterance.lang = 'en-US';
+
+    // Return a promise that resolves when speech is done
+    return new Promise((resolve) => {
+      utterance.onend = resolve;
+      synth.speak(utterance);
+    });
   } catch (error) {
     console.warn('Speech synthesis error:', error);
   }
@@ -18,21 +28,18 @@ export const speak = (text: string) => {
 
 export const playSound = async (type: 'correct' | 'incorrect') => {
   try {
-    const audio = new Audio(
-      type === 'correct' 
-        ? 'https://cdn.freesound.org/previews/242/242501_4414128-lq.mp3'  // Ding sound
-        : 'https://cdn.freesound.org/previews/142/142608_2494344-lq.mp3'  // Buzzer
-    );
+    const soundUrl = type === 'correct'
+      ? 'https://assets.mixkit.co/active_storage/sfx/2870/2870-preview.mp3' // Success ding
+      : 'https://assets.mixkit.co/active_storage/sfx/2947/2947-preview.mp3'; // Error buzz
 
-    // Wait for the audio to load before playing
-    await new Promise((resolve, reject) => {
-      audio.addEventListener('canplaythrough', resolve);
-      audio.addEventListener('error', reject);
-      // Set a timeout in case the audio fails to load
-      setTimeout(reject, 3000);
-    });
+    const audio = new Audio(soundUrl);
+    audio.volume = 0.5; // Reduce volume slightly
 
     await audio.play();
+
+    return new Promise((resolve) => {
+      audio.onended = resolve;
+    });
   } catch (error) {
     console.warn('Audio playback error:', error);
   }
