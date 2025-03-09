@@ -2,5 +2,6 @@
   "variant": "vibrant",
   "primary": "hsl(30, 100%, 50%)",
   "appearance": "light",
-  "radius": 1.0
+  "radius": 1.0,
+  "foreground": "hsl(0, 0%, 0%)"
 }
