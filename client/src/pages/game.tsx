@@ -23,6 +23,12 @@ export default function Game() {
   const [gameState, setGameState] = useState<GameState>();
   const [showingScore, setShowingScore] = useState(false);
 
+  const resetGame = useCallback(() => {
+    setGameState(undefined);
+    setShowingScore(false);
+    setLocation('/');
+  }, [setLocation]);
+
   const startGame = (test: SubtractionTest) => {
     const state = getInitialGameState(test);
     const problem = generateProblem(test);
@@ -35,7 +41,7 @@ export default function Game() {
 
     const isCorrect = answer === gameState.currentProblem.answer;
     const currentScore = gameState.scores[gameState.level];
-    
+
     if (isCorrect) {
       playSound('correct');
       speak('Good!');
@@ -78,7 +84,7 @@ export default function Game() {
 
   const handleTimeUp = useCallback(() => {
     if (!gameState?.currentProblem || showingScore) return;
-    
+
     setGameState(prev => {
       if (!prev) return prev;
       return {
@@ -94,10 +100,10 @@ export default function Game() {
 
   const continueToNextLevel = () => {
     if (!gameState) return;
-    
+
     const nextLevel = (gameState.level + 1) as GameLevel;
     const problem = generateProblem(gameState.test);
-    
+
     setShowingScore(false);
     setGameState({
       ...gameState,
@@ -105,7 +111,7 @@ export default function Game() {
       currentProblem: problem,
       timeLeft: getTimeForLevel(nextLevel)
     });
-    speak(`${problem.first} minus ${problem.second}`);
+    speak(`${problem.first} minus ${nextProblem.second}`);
   };
 
   if (!gameState?.gameStarted) {
@@ -138,7 +144,7 @@ export default function Game() {
           <FinalScore
             scores={gameState.scores}
             totalScore={calculateTotalScore(gameState.scores)}
-            onExit={() => setLocation('/')}
+            onExit={resetGame}
           />
         </div>
       );
@@ -150,7 +156,7 @@ export default function Game() {
           level={gameState.level}
           score={gameState.scores[gameState.level]}
           onContinue={continueToNextLevel}
-          onExit={() => setLocation('/')}
+          onExit={resetGame}
         />
       </div>
     );
@@ -160,7 +166,7 @@ export default function Game() {
     <div className="container max-w-2xl mx-auto p-6 space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Level {gameState.level}</h2>
-        <Button variant="outline" onClick={() => setLocation('/')}>
+        <Button variant="outline" onClick={resetGame}>
           Exit
         </Button>
       </div>
