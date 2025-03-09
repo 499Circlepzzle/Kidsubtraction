@@ -11,17 +11,19 @@ import { useTranslation, Language } from "@/lib/i18n/translations";
 const LANGUAGE_NAMES: Record<Language, string> = {
   en: "English",
   es: "Español",
-  fr: "Français"
+  fr: "Français",
+  de: "Deutsch"
 };
 
 export function LanguageSelector() {
-  const { language, setLanguage } = useTranslation();
+  const { language, setLanguage, t } = useTranslation();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" className="flex gap-2">
           <Globe className="h-4 w-4" />
+          {t('language')}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

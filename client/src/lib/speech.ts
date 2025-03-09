@@ -19,7 +19,8 @@ export const speak = (text: string, lang: string = 'en-US') => {
     const langMap: Record<string, string> = {
       'en': 'en-US',
       'es': 'es-ES',
-      'fr': 'fr-FR'
+      'fr': 'fr-FR',
+      'de': 'de-DE'
     };
     utterance.lang = langMap[lang] || 'en-US';
 

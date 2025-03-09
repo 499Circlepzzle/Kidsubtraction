@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-export type Language = 'en' | 'es' | 'fr';
+export type Language = 'en' | 'es' | 'fr' | 'de';
 
 export const translations = {
   en: {
@@ -18,6 +18,7 @@ export const translations = {
     gameComplete: "Game Complete!",
     finalScore: "Final Score: {{score}} / 60",
     playAgain: "Play Again",
+    language: "Language"
   },
   es: {
     title: "Práctica de Resta",
@@ -34,6 +35,7 @@ export const translations = {
     gameComplete: "¡Juego Completado!",
     finalScore: "Puntuación Final: {{score}} / 60",
     playAgain: "Jugar de Nuevo",
+    language: "Idioma"
   },
   fr: {
     title: "Exercice de Soustraction",
@@ -50,6 +52,24 @@ export const translations = {
     gameComplete: "Jeu Terminé!",
     finalScore: "Score Final: {{score}} / 60",
     playAgain: "Rejouer",
+    language: "Langue"
+  },
+  de: {
+    title: "Subtraktionsübung",
+    minus: "Minus",
+    timeLeft: "Verbleibende Zeit",
+    submit: "Bestätigen",
+    correct: "Gut!",
+    level: "Level",
+    exit: "Beenden",
+    nextLevel: "Nächstes Level",
+    levelComplete: "Level {{level}} Abgeschlossen!",
+    score: "Punktzahl: {{correct}} / {{total}}",
+    percentageCorrect: "{{percentage}}% Richtig",
+    gameComplete: "Spiel Beendet!",
+    finalScore: "Endpunktzahl: {{score}} / 60",
+    playAgain: "Nochmal Spielen",
+    language: "Sprache"
   }
 };
 
