@@ -21,7 +21,7 @@ import { LanguageSelector } from '@/components/language-selector';
 const PROBLEMS_PER_LEVEL = 10;
 
 export default function Game() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [, setLocation] = useLocation();
   const [gameState, setGameState] = useState<GameState>();
   const [showingScore, setShowingScore] = useState(false);
@@ -42,7 +42,7 @@ export default function Game() {
         gameStarted: true,
         usedNumbers: [problem.first]
       });
-      speak(`${problem.first} minus ${problem.second}`);
+      speak(`${problem.first} ${t('minus')} ${problem.second}`, language);
     } catch (error) {
       console.error('Error starting game:', error);
     }
@@ -55,8 +55,8 @@ export default function Game() {
     const currentScore = gameState.scores[gameState.level];
 
     if (isCorrect) {
-      speak('Good!');
-      setTimeout(() => playSound('correct'), 800); // Play sound after voice
+      speak(t('correct'), language);
+      setTimeout(() => playSound('correct'), 800);
     } else {
       playSound('incorrect');
     }
@@ -92,12 +92,12 @@ export default function Game() {
             usedNumbers: [...prev.usedNumbers, nextProblem.first]
           };
         });
-        speak(`${nextProblem.first} minus ${nextProblem.second}`);
+        speak(`${nextProblem.first} ${t('minus')} ${nextProblem.second}`, language);
       } catch (error) {
         console.error('Error generating next problem:', error);
       }
     }
-  }, [gameState]);
+  }, [gameState, t, language]);
 
   const handleTimeUp = useCallback(() => {
     if (!gameState?.currentProblem || showingScore) return;
@@ -111,7 +111,7 @@ export default function Game() {
     });
 
     if (gameState.timeLeft <= 1) {
-      handleAnswer(-1); // Force incorrect answer on timeout
+      handleAnswer(-1);
     }
   }, [gameState, showingScore, handleAnswer]);
 
@@ -119,7 +119,7 @@ export default function Game() {
     if (!gameState) return;
 
     const nextLevel = (gameState.level + 1) as GameLevel;
-    const problem = generateProblem(gameState.test, []);  // Reset used numbers for new level
+    const problem = generateProblem(gameState.test, []);
 
     setShowingScore(false);
     setGameState({
@@ -127,9 +127,9 @@ export default function Game() {
       level: nextLevel,
       currentProblem: problem,
       timeLeft: getTimeForLevel(nextLevel),
-      usedNumbers: [problem.first]  // Reset used numbers, add first problem's number
+      usedNumbers: [problem.first]
     });
-    speak(`${problem.first} minus ${problem.second}`);
+    speak(`${problem.first} ${t('minus')} ${problem.second}`, language);
   };
 
   if (!gameState?.gameStarted) {
