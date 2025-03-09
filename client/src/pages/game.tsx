@@ -48,8 +48,8 @@ export default function Game() {
     const currentScore = gameState.scores[gameState.level];
 
     if (isCorrect) {
-      playSound('correct');
       speak('Good!');
+      setTimeout(() => playSound('correct'), 500); // Play sound after speaking
     } else {
       playSound('incorrect');
     }
