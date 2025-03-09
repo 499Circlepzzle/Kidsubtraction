@@ -1,6 +1,6 @@
 const synth = window.speechSynthesis;
 
-export const speak = (text: string) => {
+export const speak = (text: string, lang: string = 'en-US') => {
   try {
     if (!synth) {
       console.warn('Speech synthesis not available');
@@ -14,7 +14,14 @@ export const speak = (text: string) => {
     utterance.rate = 0.9;
     utterance.pitch = 1.0;
     utterance.volume = 1.0;
-    utterance.lang = 'en-US';
+
+    // Map language codes to speech synthesis language codes
+    const langMap: Record<string, string> = {
+      'en': 'en-US',
+      'es': 'es-ES',
+      'fr': 'fr-FR'
+    };
+    utterance.lang = langMap[lang] || 'en-US';
 
     synth.speak(utterance);
   } catch (error) {

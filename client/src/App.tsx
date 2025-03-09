@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Game from "@/pages/game";
+import { I18nProvider } from "./lib/i18n/I18nProvider";
 
 function Router() {
   return (
@@ -17,8 +18,10 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router />
-      <Toaster />
+      <I18nProvider>
+        <Router />
+        <Toaster />
+      </I18nProvider>
     </QueryClientProvider>
   );
 }

@@ -15,10 +15,13 @@ import {
   calculateTotalScore,
   getInitialGameState
 } from '@/lib/game';
+import { useTranslation } from '@/lib/i18n/translations';
+import { LanguageSelector } from '@/components/language-selector';
 
 const PROBLEMS_PER_LEVEL = 10;
 
 export default function Game() {
+  const { t } = useTranslation();
   const [, setLocation] = useLocation();
   const [gameState, setGameState] = useState<GameState>();
   const [showingScore, setShowingScore] = useState(false);
@@ -133,7 +136,10 @@ export default function Game() {
     return (
       <div className="container max-w-2xl mx-auto p-6">
         <Card className="p-8 text-center">
-          <h1 className="text-4xl font-bold mb-8">Subtraction Practice</h1>
+          <div className="flex justify-end mb-4">
+            <LanguageSelector />
+          </div>
+          <h1 className="text-4xl font-bold mb-8">{t('title')}</h1>
           <div className="grid grid-cols-3 gap-4">
             {Array.from({ length: 9 }, (_, i) => i + 1).map((num) => (
               <Button
@@ -142,7 +148,7 @@ export default function Game() {
                 size="lg"
                 className="text-xl h-16 text-black hover:text-black"
               >
-                Minus {num}
+                {t('minus')} {num}
               </Button>
             ))}
           </div>
@@ -180,10 +186,13 @@ export default function Game() {
   return (
     <div className="container max-w-2xl mx-auto p-6 space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">Level {gameState.level}</h2>
-        <Button variant="outline" onClick={resetGame}>
-          Exit
-        </Button>
+        <h2 className="text-2xl font-bold">{t('level')} {gameState.level}</h2>
+        <div className="flex gap-2">
+          <LanguageSelector />
+          <Button variant="outline" onClick={resetGame}>
+            {t('exit')}
+          </Button>
+        </div>
       </div>
 
       <Timer
