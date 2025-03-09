@@ -29,16 +29,20 @@ export default function Game() {
     setLocation('/');
   }, [setLocation]);
 
-  const startGame = (test: SubtractionTest) => {
-    const state = getInitialGameState(test);
-    const problem = generateProblem(test, []);
-    setGameState({
-      ...state,
-      currentProblem: problem,
-      gameStarted: true,
-      usedNumbers: [problem.first]
-    });
-    speak(`${problem.first} minus ${problem.second}`);
+  const startGame = async (test: SubtractionTest) => {
+    try {
+      const state = getInitialGameState(test);
+      const problem = generateProblem(test, []);
+      setGameState({
+        ...state,
+        currentProblem: problem,
+        gameStarted: true,
+        usedNumbers: [problem.first]
+      });
+      await speak(`${problem.first} minus ${problem.second}`);
+    } catch (error) {
+      console.error('Error starting game:', error);
+    }
   };
 
   const handleAnswer = useCallback(async (answer: number) => {
@@ -47,11 +51,15 @@ export default function Game() {
     const isCorrect = answer === gameState.currentProblem.answer;
     const currentScore = gameState.scores[gameState.level];
 
-    if (isCorrect) {
-      await speak('Good!');
-      await playSound('correct');
-    } else {
-      await playSound('incorrect');
+    try {
+      if (isCorrect) {
+        await speak('Good!');
+        await playSound('correct');
+      } else {
+        await playSound('incorrect');
+      }
+    } catch (error) {
+      console.error('Error playing feedback:', error);
     }
 
     const newScore = {
@@ -74,17 +82,21 @@ export default function Game() {
     if (newScore.total >= PROBLEMS_PER_LEVEL) {
       setShowingScore(true);
     } else {
-      const nextProblem = generateProblem(gameState.test, gameState.usedNumbers);
-      setGameState(prev => {
-        if (!prev) return prev;
-        return {
-          ...prev,
-          currentProblem: nextProblem,
-          timeLeft: getTimeForLevel(prev.level),
-          usedNumbers: [...prev.usedNumbers, nextProblem.first]
-        };
-      });
-      speak(`${nextProblem.first} minus ${nextProblem.second}`);
+      try {
+        const nextProblem = generateProblem(gameState.test, gameState.usedNumbers);
+        setGameState(prev => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            currentProblem: nextProblem,
+            timeLeft: getTimeForLevel(prev.level),
+            usedNumbers: [...prev.usedNumbers, nextProblem.first]
+          };
+        });
+        await speak(`${nextProblem.first} minus ${nextProblem.second}`);
+      } catch (error) {
+        console.error('Error generating next problem:', error);
+      }
     }
   }, [gameState]);
 
