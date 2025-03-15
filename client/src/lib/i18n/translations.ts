@@ -18,7 +18,17 @@ export const translations = {
     gameComplete: "Game Complete!",
     finalScore: "Final Score: {{score}} / 60",
     playAgain: "Play Again",
-    language: "Language"
+    language: "Language",
+    difficultySettings: "Difficulty Settings",
+    customizeGameSettings: "Customize your game experience",
+    timePerProblem: "Time per problem",
+    seconds: "seconds",
+    voiceFeedback: "Voice feedback",
+    soundEffects: "Sound effects",
+    autoAdvance: "Auto advance to next problem",
+    cancel: "Cancel",
+    saveSettings: "Save Settings",
+    settings: "Settings"
   },
   es: {
     title: "Práctica de Resta",
@@ -35,7 +45,17 @@ export const translations = {
     gameComplete: "¡Juego Completado!",
     finalScore: "Puntuación Final: {{score}} / 60",
     playAgain: "Jugar de Nuevo",
-    language: "Idioma"
+    language: "Idioma",
+    difficultySettings: "Ajustes de Dificultad",
+    customizeGameSettings: "Personaliza tu experiencia de juego",
+    timePerProblem: "Tiempo por problema",
+    seconds: "segundos",
+    voiceFeedback: "Retroalimentación por voz",
+    soundEffects: "Efectos de sonido",
+    autoAdvance: "Avance automático",
+    cancel: "Cancelar",
+    saveSettings: "Guardar Ajustes",
+    settings: "Ajustes"
   },
   fr: {
     title: "Exercice de Soustraction",
@@ -52,7 +72,17 @@ export const translations = {
     gameComplete: "Jeu Terminé!",
     finalScore: "Score Final: {{score}} / 60",
     playAgain: "Rejouer",
-    language: "Langue"
+    language: "Langue",
+    difficultySettings: "Paramètres de Difficulté",
+    customizeGameSettings: "Personnalisez votre expérience de jeu",
+    timePerProblem: "Temps par problème",
+    seconds: "secondes",
+    voiceFeedback: "Retour vocal",
+    soundEffects: "Effets sonores",
+    autoAdvance: "Avancement automatique",
+    cancel: "Annuler",
+    saveSettings: "Enregistrer",
+    settings: "Paramètres"
   },
   de: {
     title: "Subtraktionsübung",
@@ -69,7 +99,17 @@ export const translations = {
     gameComplete: "Spiel Beendet!",
     finalScore: "Endpunktzahl: {{score}} / 60",
     playAgain: "Nochmal Spielen",
-    language: "Sprache"
+    language: "Sprache",
+    difficultySettings: "Schwierigkeitseinstellungen",
+    customizeGameSettings: "Passe dein Spielerlebnis an",
+    timePerProblem: "Zeit pro Aufgabe",
+    seconds: "Sekunden",
+    voiceFeedback: "Sprachausgabe",
+    soundEffects: "Soundeffekte",
+    autoAdvance: "Automatisch fortfahren",
+    cancel: "Abbrechen",
+    saveSettings: "Einstellungen speichern",
+    settings: "Einstellungen"
   }
 };
 

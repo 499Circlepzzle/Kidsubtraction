@@ -13,10 +13,13 @@ import {
   getTimeForLevel,
   generateProblem,
   calculateTotalScore,
-  getInitialGameState
+  getInitialGameState,
+  type DifficultySettings,
+  DEFAULT_DIFFICULTY
 } from '@/lib/game';
 import { useTranslation } from '@/lib/i18n/translations';
 import { LanguageSelector } from '@/components/language-selector';
+import { DifficultySettingsPanel } from '@/components/game/difficulty-settings';
 
 const PROBLEMS_PER_LEVEL = 10;
 
@@ -25,6 +28,8 @@ export default function Game() {
   const [, setLocation] = useLocation();
   const [gameState, setGameState] = useState<GameState>();
   const [showingScore, setShowingScore] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [difficultySettings, setDifficultySettings] = useState(DEFAULT_DIFFICULTY);
 
   const resetGame = useCallback(() => {
     setGameState(undefined);
@@ -32,9 +37,14 @@ export default function Game() {
     setLocation('/');
   }, [setLocation]);
 
+  const handleSaveSettings = (newSettings: DifficultySettings) => {
+    setDifficultySettings(newSettings);
+    setShowSettings(false);
+  };
+
   const startGame = (test: SubtractionTest) => {
     try {
-      const state = getInitialGameState(test);
+      const state = getInitialGameState(test, difficultySettings);
       const problem = generateProblem(test, []);
       setGameState({
         ...state,
@@ -42,7 +52,9 @@ export default function Game() {
         gameStarted: true,
         usedNumbers: [problem.first]
       });
-      speak(`${problem.first} ${t('minus')} ${problem.second}`, language);
+      if (difficultySettings.voiceEnabled) {
+        speak(`${problem.first} ${t('minus')} ${problem.second}`, language);
+      }
     } catch (error) {
       console.error('Error starting game:', error);
     }
@@ -55,9 +67,13 @@ export default function Game() {
     const currentScore = gameState.scores[gameState.level];
 
     if (isCorrect) {
-      speak(t('correct'), language);
-      setTimeout(() => playSound('correct'), 800);
-    } else {
+      if (difficultySettings.voiceEnabled) {
+        speak(t('correct'), language);
+      }
+      if (difficultySettings.soundEnabled) {
+        setTimeout(() => playSound('correct'), 800);
+      }
+    } else if (difficultySettings.soundEnabled) {
       playSound('incorrect');
     }
 
@@ -88,16 +104,18 @@ export default function Game() {
           return {
             ...prev,
             currentProblem: nextProblem,
-            timeLeft: getTimeForLevel(prev.level),
+            timeLeft: getTimeForLevel(prev.level, difficultySettings),
             usedNumbers: [...prev.usedNumbers, nextProblem.first]
           };
         });
-        speak(`${nextProblem.first} ${t('minus')} ${nextProblem.second}`, language);
+        if (difficultySettings.voiceEnabled) {
+          speak(`${nextProblem.first} ${t('minus')} ${nextProblem.second}`, language);
+        }
       } catch (error) {
         console.error('Error generating next problem:', error);
       }
     }
-  }, [gameState, t, language]);
+  }, [gameState, difficultySettings, t, language]);
 
   const handleTimeUp = useCallback(() => {
     if (!gameState?.currentProblem || showingScore) return;
@@ -126,7 +144,7 @@ export default function Game() {
       ...gameState,
       level: nextLevel,
       currentProblem: problem,
-      timeLeft: getTimeForLevel(nextLevel),
+      timeLeft: getTimeForLevel(nextLevel, difficultySettings),
       usedNumbers: [problem.first]
     });
     speak(`${problem.first} ${t('minus')} ${problem.second}`, language);
@@ -136,22 +154,35 @@ export default function Game() {
     return (
       <div className="container max-w-2xl mx-auto p-6">
         <Card className="p-8 text-center">
-          <div className="flex justify-end mb-4">
+          <div className="flex justify-end mb-4 gap-2">
             <LanguageSelector />
+            <Button variant="outline" onClick={() => setShowSettings(true)}>
+              {t('settings')}
+            </Button>
           </div>
-          <h1 className="text-4xl font-bold mb-8">{t('title')}</h1>
-          <div className="grid grid-cols-3 gap-4">
-            {Array.from({ length: 9 }, (_, i) => i + 1).map((num) => (
-              <Button
-                key={num}
-                onClick={() => startGame(num as SubtractionTest)}
-                size="lg"
-                className="text-xl h-16 text-black hover:text-black"
-              >
-                {t('minus')} {num}
-              </Button>
-            ))}
-          </div>
+          {showSettings ? (
+            <DifficultySettingsPanel
+              settings={difficultySettings}
+              onSave={handleSaveSettings}
+              onCancel={() => setShowSettings(false)}
+            />
+          ) : (
+            <>
+              <h1 className="text-4xl font-bold mb-8">{t('title')}</h1>
+              <div className="grid grid-cols-3 gap-4">
+                {Array.from({ length: 9 }, (_, i) => i + 1).map((num) => (
+                  <Button
+                    key={num}
+                    onClick={() => startGame(num as SubtractionTest)}
+                    size="lg"
+                    className="text-xl h-16 text-black hover:text-black"
+                  >
+                    {t('minus')} {num}
+                  </Button>
+                ))}
+              </div>
+            </>
+          )}
         </Card>
       </div>
     );
@@ -197,7 +228,7 @@ export default function Game() {
 
       <Timer
         timeLeft={gameState.timeLeft}
-        maxTime={getTimeForLevel(gameState.level)}
+        maxTime={getTimeForLevel(gameState.level, difficultySettings)}
         onTimeUp={handleTimeUp}
         isPaused={showingScore}
       />
