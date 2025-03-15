@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Slider } from "@/components/ui/slider";
 import { DifficultySettings } from "@/lib/game";
 import { useTranslation } from "@/lib/i18n/translations";
 
@@ -22,13 +21,6 @@ interface DifficultySettingsProps {
 export function DifficultySettingsPanel({ settings, onSave, onCancel }: DifficultySettingsProps) {
   const { t } = useTranslation();
   const [localSettings, setLocalSettings] = useState<DifficultySettings>({ ...settings });
-
-  const handleTimeChange = (value: number[]) => {
-    setLocalSettings((prev: DifficultySettings) => ({
-      ...prev,
-      timePerProblem: value[0]
-    }));
-  };
 
   const handleSwitchChange = (key: keyof DifficultySettings) => {
     setLocalSettings((prev: DifficultySettings) => ({
@@ -45,18 +37,6 @@ export function DifficultySettingsPanel({ settings, onSave, onCancel }: Difficul
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
-          <div>
-            <Label>{t('timePerProblem')}: {localSettings.timePerProblem} {t('seconds')}</Label>
-            <Slider
-              value={[localSettings.timePerProblem]}
-              onValueChange={handleTimeChange}
-              min={5}  // Increased minimum from 2 to 5
-              max={30} // Increased maximum from 20 to 30
-              step={1}
-              className="mt-2"
-            />
-          </div>
-
           <div className="flex items-center justify-between">
             <Label>{t('voiceFeedback')}</Label>
             <Switch
