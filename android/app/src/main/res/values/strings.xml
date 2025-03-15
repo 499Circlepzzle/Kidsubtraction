@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Subtraction Practice</string>
+    <string name="title_activity_main">Subtraction Practice</string>
+    <string name="package_name">com.mathsubtraction.app</string>
+    <string name="custom_url_scheme">com.mathsubtraction.app</string>
+</resources>

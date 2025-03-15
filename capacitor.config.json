@@ -1,0 +1,18 @@
+{
+  "appId": "com.mathsubtraction.app",
+  "appName": "Subtraction Practice",
+  "webDir": "dist/public",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "buildOptions": {
+      "keystorePath": "release.keystore",
+      "keystoreAlias": "release",
+      "versionCode": 1,
+      "versionName": "1.0.0",
+      "minSdkVersion": 21,
+      "targetSdkVersion": 33
+    }
+  }
+}
