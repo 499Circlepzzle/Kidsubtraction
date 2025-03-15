@@ -50,8 +50,8 @@ export function DifficultySettingsPanel({ settings, onSave, onCancel }: Difficul
             <Slider
               value={[localSettings.timePerProblem]}
               onValueChange={handleTimeChange}
-              min={2}
-              max={20}
+              min={5}  // Increased minimum from 2 to 5
+              max={30} // Increased maximum from 20 to 30
               step={1}
               className="mt-2"
             />

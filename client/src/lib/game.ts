@@ -35,7 +35,7 @@ export interface GameState {
 const BASE_NUMBERS = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
 
 export const DEFAULT_DIFFICULTY: DifficultySettings = {
-  timePerProblem: 12,
+  timePerProblem: 15, // Increased from 12 to 15 seconds
   voiceEnabled: true,
   soundEnabled: true,
   autoAdvance: false
@@ -43,8 +43,8 @@ export const DEFAULT_DIFFICULTY: DifficultySettings = {
 
 export const getTimeForLevel = (level: GameLevel, settings: DifficultySettings): number => {
   const baseTime = settings.timePerProblem;
-  const reduction = (level - 1) * 2;
-  return Math.max(2, baseTime - reduction);
+  const reduction = (level - 1) * 1.5; // Reduced time decrease per level
+  return Math.max(5, baseTime - reduction); // Increased minimum time from 2 to 5
 };
 
 export const generateProblem = (subtractor: SubtractionTest, usedNumbers: number[]): Problem => {
