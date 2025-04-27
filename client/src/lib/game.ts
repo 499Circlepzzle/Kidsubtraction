@@ -48,7 +48,7 @@ export const getTimeForLevel = (level: GameLevel, settings: DifficultySettings):
     3: 8,
     4: 6,
     5: 4,
-    6: 2
+    6: 3  // Changed from 2 to 3 seconds for level 6
   };
   return times[level];
 };
