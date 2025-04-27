@@ -1,6 +1,6 @@
 const synth = window.speechSynthesis;
 
-export const speak = (text: string, lang: string = 'en-US') => {
+export const speak = (text: string, lang: string = 'en') => {
   try {
     if (!synth) {
       console.warn('Speech synthesis not available');
@@ -22,8 +22,12 @@ export const speak = (text: string, lang: string = 'en-US') => {
       'fr': 'fr-FR',
       'de': 'de-DE'
     };
+    
+    // Make sure we're using the correct language code
     utterance.lang = langMap[lang] || 'en-US';
-
+    
+    console.log(`Speaking in language: ${lang}, using voice language: ${utterance.lang}`);
+    
     synth.speak(utterance);
   } catch (error) {
     console.error('Speech synthesis error:', error);

@@ -147,7 +147,9 @@ export default function Game() {
       timeLeft: getTimeForLevel(nextLevel, difficultySettings),
       usedNumbers: [problem.first]
     });
-    speak(`${problem.first} ${t('minus')} ${problem.second}`, language);
+    if (difficultySettings.voiceEnabled) {
+      speak(`${problem.first} ${t('minus')} ${problem.second}`, language);
+    }
   };
 
   if (!gameState?.gameStarted) {
