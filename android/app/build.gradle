@@ -16,8 +16,21 @@ android {
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    
+    signingConfigs {
+        release {
+            // Path to your keystore file
+            storeFile file("../../release.keystore") 
+            // Use environment variables or a properties file for passwords
+            storePassword System.getenv("KEYSTORE_PASSWORD") ?: "password"
+            keyAlias "release"
+            keyPassword System.getenv("KEY_PASSWORD") ?: "password"
+        }
+    }
+    
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

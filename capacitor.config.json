@@ -14,7 +14,32 @@
       "versionName": "1.0.0",
       "minSdkVersion": 21,
       "targetSdkVersion": 33,
-      "debuggable": true
+      "debuggable": false
+    },
+    "backgroundColor": "#ffffff",
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false,
+    "hideLogs": true
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "backgroundColor": "#ffffff",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP"
+    }
+  },
+  "appMetadata": {
+    "shortDescription": "Educational app to learn subtraction with timed tests and voice announcements",
+    "longDescription": "An interactive educational web game designed to make subtraction learning engaging and fun for children. The application combines adaptive learning technologies with gamification to help students improve math skills through an intuitive, visually appealing interface.",
+    "category": ["education", "kids", "learning", "mathematics"],
+    "keywords": ["education", "math", "subtraction", "learning", "kids", "practice", "school"],
+    "author": {
+      "name": "Your Name",
+      "email": "your.email@example.com",
+      "url": "https://your-website.com"
     }
   }
 }
