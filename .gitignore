@@ -1,6 +1,73 @@
-node_modules
-dist
-.DS_Store
-server/public
-vite.config.ts.*
+# Node.js dependencies
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build files
+dist/
+build/
+server/public/
 *.tar.gz
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temp files
+*.tmp
+*.swp
+*.bak
+*.log
+
+# Env and config
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.env.local
+
+# Vite
+vite.config.ts.*
+
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/app/release/
+android/local.properties
+android/keystore.properties
+*.keystore
+*.jks
+release.keystore
+
+# Capacitor
+capacitor.config.json.backup
+android/.idea/
+ios/App/Pods/
+ios/App/public/
+ios/App/build/
+
+# Android Auto-generated files
+android/app/src/main/assets/public/
+
+# Replit specific
+.breakpoints
+.replit
+replit.nix
