@@ -12,7 +12,13 @@ const LANGUAGE_NAMES: Record<Language, string> = {
   en: "English",
   es: "Español",
   fr: "Français",
-  de: "Deutsch"
+  de: "Deutsch",
+  it: "Italiano",
+  pt: "Português",
+  nl: "Nederlands",
+  ja: "日本語",
+  zh: "中文",
+  ru: "Русский"
 };
 
 export function LanguageSelector() {
