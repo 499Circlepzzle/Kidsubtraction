@@ -18,7 +18,13 @@ const LANGUAGE_NAMES: Record<Language, string> = {
   nl: "Nederlands",
   ja: "日本語",
   zh: "中文",
-  ru: "Русский"
+  ru: "Русский",
+  hi: "हिन्दी",
+  sw: "Kiswahili",
+  am: "አማርኛ",
+  yo: "Yorùbá",
+  zu: "isiZulu",
+  ar: "العربية"
 };
 
 export function LanguageSelector() {

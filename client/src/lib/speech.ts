@@ -26,7 +26,13 @@ export const speak = (text: string, lang: string = 'en') => {
       'nl': 'nl-NL',
       'ja': 'ja-JP',
       'zh': 'zh-CN',
-      'ru': 'ru-RU'
+      'ru': 'ru-RU',
+      'hi': 'hi-IN',
+      'sw': 'sw-KE',
+      'am': 'am-ET',
+      'yo': 'yo-NG',
+      'zu': 'zu-ZA',
+      'ar': 'ar-SA'
     };
     
     // Make sure we're using the correct language code
