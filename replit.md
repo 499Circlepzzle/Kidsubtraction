@@ -34,7 +34,7 @@ This is an interactive educational web application designed to help children lea
 
 ### Internationalization System
 - **Translation Engine**: Custom i18n implementation in `client/src/lib/i18n/`
-- **Language Support**: 10 languages (English, Spanish, French, German, Italian, Portuguese, Dutch, Japanese, Chinese, Russian)
+- **Language Support**: 16 languages (English, Spanish, French, German, Italian, Portuguese, Dutch, Japanese, Chinese, Russian, Hindi, Swahili, Amharic, Yoruba, Zulu, Arabic)
 - **Context-Based**: React Context API for global language state management
 
 ### Audio System
@@ -89,12 +89,18 @@ This is an interactive educational web application designed to help children lea
 - **Migrations**: Drizzle Kit for schema management and migrations
 - **Scaling**: Serverless architecture supports automatic scaling
 
-## Changelog
+## Recent Changes
 
-```
-Changelog:
-- July 04, 2025. Initial setup
-```
+- **January 1, 2025**: Added 6 new languages (Hindi, Swahili, Amharic, Yoruba, Zulu, Arabic) expanding total language support to 16 languages
+- **January 1, 2025**: Enhanced voice synthesis system with proper language codes for all African and Asian languages
+- **January 1, 2025**: Updated language selector UI with native language names in their respective scripts
+- **January 1, 2025**: Prepared comprehensive GitHub setup documentation and automation scripts
+- **December 31, 2024**: Expanded language support from 4 to 10 languages (added Italian, Portuguese, Dutch, Japanese, Chinese, Russian)
+- **December 31, 2024**: Enhanced multilingual voice feedback system with proper language mapping
+- **December 31, 2024**: Updated Level 6 timing from 2 seconds to 3 seconds based on user feedback
+- **December 31, 2024**: Implemented Android app packaging with Capacitor for Google Play and Amazon App Store submission
+- **December 31, 2024**: Added comprehensive build documentation and store submission guidelines
+- **December 31, 2024**: Initial core game implementation with 9 subtraction tests and 6 difficulty levels
 
 ## User Preferences
 
