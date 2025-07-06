@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-export type Language = 'en' | 'es' | 'fr' | 'de' | 'it' | 'pt' | 'nl' | 'ja' | 'zh' | 'ru' | 'hi' | 'sw' | 'am' | 'yo' | 'zu' | 'ar';
+export type Language = 'en' | 'es' | 'fr' | 'de' | 'it' | 'pt' | 'nl' | 'ja' | 'zh' | 'ru' | 'hi' | 'sw' | 'am' | 'yo' | 'zu' | 'ar' | 'af' | 'xh' | 'st';
 
 export const translations = {
   en: {
@@ -434,6 +434,87 @@ export const translations = {
     cancel: "إلغاء",
     saveSettings: "حفظ الإعدادات",
     settings: "الإعدادات"
+  },
+  af: {
+    title: "Aftrek Oefening",
+    minus: "Minus",
+    timeLeft: "Tyd Oor",
+    submit: "Stuur In",
+    correct: "Goed gedoen!",
+    level: "Vlak",
+    exit: "Verlaat",
+    nextLevel: "Volgende Vlak",
+    levelComplete: "Vlak {{level}} Voltooi!",
+    score: "Telling: {{correct}} / {{total}}",
+    percentageCorrect: "{{percentage}}% Korrek",
+    gameComplete: "Spel Voltooi!",
+    finalScore: "Finale Telling: {{score}} / 60",
+    playAgain: "Speel Weer",
+    language: "Taal",
+    difficultySettings: "Moeilikheidsgraad Instellings",
+    customizeGameSettings: "Pas jou spel ervaring aan",
+    timePerProblem: "Tyd per probleem",
+    seconds: "sekondes",
+    voiceFeedback: "Stem terugvoer",
+    soundEffects: "Klank effekte",
+    autoAdvance: "Outomatiese vordering",
+    cancel: "Kanselleer",
+    saveSettings: "Stoor Instellings",
+    settings: "Instellings"
+  },
+  xh: {
+    title: "Ukuziqhelanisa Nokuthabatha",
+    minus: "Minus",
+    timeLeft: "Ixesha Eliseleyo",
+    submit: "Thumela",
+    correct: "Kulungile kakhulu!",
+    level: "Inqanaba",
+    exit: "Phuma",
+    nextLevel: "Inqanaba Elandelayo",
+    levelComplete: "Inqanaba {{level}} Ligqityiwe!",
+    score: "Amanqaku: {{correct}} / {{total}}",
+    percentageCorrect: "{{percentage}}% Ngokuchanekileyo",
+    gameComplete: "Umdlalo Ugqityiwe!",
+    finalScore: "Amanqaku Okugqibela: {{score}} / 60",
+    playAgain: "Dlala Kwakhona",
+    language: "Ulwimi",
+    difficultySettings: "Izicwangciso Zobunzima",
+    customizeGameSettings: "Lungiselela amava akho omdlalo",
+    timePerProblem: "Ixesha ngengxaki nganye",
+    seconds: "imizuzwana",
+    voiceFeedback: "Impendulo yezwi",
+    soundEffects: "Iziphumo zesandi",
+    autoAdvance: "Ukuqhubela phambili ngokuzenzekelayo",
+    cancel: "Rhoxisa",
+    saveSettings: "Gcina Izicwangciso",
+    settings: "Izicwangciso"
+  },
+  st: {
+    title: "Boitloaelo ba ho Tlosoa",
+    minus: "Tlosa",
+    timeLeft: "Nako e Setseng",
+    submit: "Romela",
+    correct: "Ho monate haholo!",
+    level: "Boemo",
+    exit: "Tswa",
+    nextLevel: "Boemo bo Latelang",
+    levelComplete: "Boemo {{level}} bo Phetiloe!",
+    score: "Liphaka: {{correct}} / {{total}}",
+    percentageCorrect: "{{percentage}}% Nepahetseng",
+    gameComplete: "Papali e Phethiloe!",
+    finalScore: "Liphaka tsa ho Qetela: {{score}} / 60",
+    playAgain: "Bapala Hape",
+    language: "Puo",
+    difficultySettings: "Litlhophiso tsa Boima",
+    customizeGameSettings: "Hlophisa boiphihlelo ba hao ba papali",
+    timePerProblem: "Nako bakeng sa bothata bo bong",
+    seconds: "metsotsoana",
+    voiceFeedback: "Karabelo ea lentswe",
+    soundEffects: "Ditlamorago tsa modumo",
+    autoAdvance: "Tsoelo-pele ea boithaopi",
+    cancel: "Hlakola",
+    saveSettings: "Boloka Litlhophiso",
+    settings: "Litlhophiso"
   }
 };
 

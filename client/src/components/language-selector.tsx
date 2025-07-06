@@ -24,7 +24,10 @@ const LANGUAGE_NAMES: Record<Language, string> = {
   am: "አማርኛ",
   yo: "Yorùbá",
   zu: "isiZulu",
-  ar: "العربية"
+  ar: "العربية",
+  af: "Afrikaans",
+  xh: "isiXhosa",
+  st: "Sesotho"
 };
 
 export function LanguageSelector() {

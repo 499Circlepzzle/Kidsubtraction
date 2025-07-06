@@ -8,7 +8,7 @@ An interactive educational web game designed to make subtraction learning engagi
 
 - ✅ Interactive subtraction practice with 9 different tests (minus 1 through minus 9)
 - ✅ 6 progressive difficulty levels with decreasing time limits
-- ✅ Voice announcements in 16 languages (English, Spanish, French, German, Italian, Portuguese, Dutch, Japanese, Chinese, Russian, Hindi, Swahili, Amharic, Yoruba, Zulu, Arabic)
+- ✅ Voice announcements in 19 languages (English, Spanish, French, German, Italian, Portuguese, Dutch, Japanese, Chinese, Russian, Hindi, Swahili, Amharic, Yoruba, Zulu, Arabic, Afrikaans, Xhosa, Sotho)
 - ✅ Visual and audio feedback for correct/incorrect answers
 - ✅ Score tracking and level progression
 - ✅ Customizable difficulty settings
@@ -103,6 +103,9 @@ The app currently supports:
 - Yoruba (Yorùbá)
 - Zulu (isiZulu)
 - Arabic (العربية)
+- Afrikaans
+- Xhosa (isiXhosa)
+- Sotho (Sesotho)
 
 To add additional languages, modify the translations in `client/src/lib/i18n/translations.ts`.
 

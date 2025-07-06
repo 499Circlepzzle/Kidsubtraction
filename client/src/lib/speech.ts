@@ -32,7 +32,10 @@ export const speak = (text: string, lang: string = 'en') => {
       'am': 'am-ET',
       'yo': 'yo-NG',
       'zu': 'zu-ZA',
-      'ar': 'ar-SA'
+      'ar': 'ar-SA',
+      'af': 'af-ZA',
+      'xh': 'xh-ZA',
+      'st': 'st-ZA'
     };
     
     // Make sure we're using the correct language code

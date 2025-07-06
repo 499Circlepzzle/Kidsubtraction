@@ -34,7 +34,7 @@ This is an interactive educational web application designed to help children lea
 
 ### Internationalization System
 - **Translation Engine**: Custom i18n implementation in `client/src/lib/i18n/`
-- **Language Support**: 16 languages (English, Spanish, French, German, Italian, Portuguese, Dutch, Japanese, Chinese, Russian, Hindi, Swahili, Amharic, Yoruba, Zulu, Arabic)
+- **Language Support**: 19 languages (English, Spanish, French, German, Italian, Portuguese, Dutch, Japanese, Chinese, Russian, Hindi, Swahili, Amharic, Yoruba, Zulu, Arabic, Afrikaans, Xhosa, Sotho)
 - **Context-Based**: React Context API for global language state management
 
 ### Audio System
@@ -91,6 +91,7 @@ This is an interactive educational web application designed to help children lea
 
 ## Recent Changes
 
+- **January 2, 2025**: Added 3 South African languages (Afrikaans, Xhosa, Sotho) expanding total language support to 19 languages
 - **January 1, 2025**: Added 6 new languages (Hindi, Swahili, Amharic, Yoruba, Zulu, Arabic) expanding total language support to 16 languages
 - **January 1, 2025**: Enhanced voice synthesis system with proper language codes for all African and Asian languages
 - **January 1, 2025**: Updated language selector UI with native language names in their respective scripts
