@@ -28,7 +28,10 @@ export const translations = {
     autoAdvance: "Auto advance to next problem",
     cancel: "Cancel",
     saveSettings: "Save Settings",
-    settings: "Settings"
+    settings: "Settings",
+    back: "Back",
+    selectLevel: "Select Level",
+    levelDescription: "Choose your starting level:"
   },
   es: {
     title: "Práctica de Resta",
@@ -55,7 +58,10 @@ export const translations = {
     autoAdvance: "Avance automático",
     cancel: "Cancelar",
     saveSettings: "Guardar Ajustes",
-    settings: "Ajustes"
+    settings: "Ajustes",
+    back: "Atrás",
+    selectLevel: "Seleccionar Nivel",
+    levelDescription: "Elige tu nivel inicial:"
   },
   fr: {
     title: "Exercice de Soustraction",
@@ -82,7 +88,10 @@ export const translations = {
     autoAdvance: "Avancement automatique",
     cancel: "Annuler",
     saveSettings: "Enregistrer",
-    settings: "Paramètres"
+    settings: "Paramètres",
+    back: "Retour",
+    selectLevel: "Sélectionner le Niveau",
+    levelDescription: "Choisissez votre niveau de départ:"
   },
   de: {
     title: "Subtraktionsübung",
@@ -109,7 +118,10 @@ export const translations = {
     autoAdvance: "Automatisch fortfahren",
     cancel: "Abbrechen",
     saveSettings: "Einstellungen speichern",
-    settings: "Einstellungen"
+    settings: "Einstellungen",
+    back: "Zurück",
+    selectLevel: "Level Wählen",
+    levelDescription: "Wähle dein Startlevel:"
   },
   it: {
     title: "Esercizio di Sottrazione",
@@ -136,7 +148,10 @@ export const translations = {
     autoAdvance: "Avanzamento automatico",
     cancel: "Annulla",
     saveSettings: "Salva Impostazioni",
-    settings: "Impostazioni"
+    settings: "Impostazioni",
+    back: "Indietro",
+    selectLevel: "Seleziona Livello",
+    levelDescription: "Scegli il tuo livello di partenza:"
   },
   pt: {
     title: "Prática de Subtração",
@@ -163,7 +178,10 @@ export const translations = {
     autoAdvance: "Avanço automático",
     cancel: "Cancelar",
     saveSettings: "Salvar Configurações",
-    settings: "Configurações"
+    settings: "Configurações",
+    back: "Voltar",
+    selectLevel: "Selecionar Nível",
+    levelDescription: "Escolha seu nível inicial:"
   },
   nl: {
     title: "Aftrekoefening",
@@ -190,7 +208,10 @@ export const translations = {
     autoAdvance: "Automatisch doorgaan",
     cancel: "Annuleren",
     saveSettings: "Instellingen Opslaan",
-    settings: "Instellingen"
+    settings: "Instellingen",
+    back: "Terug",
+    selectLevel: "Level Selecteren",
+    levelDescription: "Kies je startlevel:"
   },
   ja: {
     title: "引き算の練習",
@@ -217,7 +238,10 @@ export const translations = {
     autoAdvance: "自動進行",
     cancel: "キャンセル",
     saveSettings: "設定を保存",
-    settings: "設定"
+    settings: "設定",
+    back: "戻る",
+    selectLevel: "レベルを選択",
+    levelDescription: "開始レベルを選択:"
   },
   zh: {
     title: "减法练习",
@@ -244,7 +268,10 @@ export const translations = {
     autoAdvance: "自动前进",
     cancel: "取消",
     saveSettings: "保存设置",
-    settings: "设置"
+    settings: "设置",
+    back: "返回",
+    selectLevel: "选择级别",
+    levelDescription: "选择你的开始级别:"
   },
   ru: {
     title: "Практика Вычитания",
@@ -271,7 +298,10 @@ export const translations = {
     autoAdvance: "Автоматическое продвижение",
     cancel: "Отмена",
     saveSettings: "Сохранить настройки",
-    settings: "Настройки"
+    settings: "Настройки",
+    back: "Назад",
+    selectLevel: "Выберите уровень",
+    levelDescription: "Выберите начальный уровень:"
   },
   hi: {
     title: "घटाने का अभ्यास",
@@ -298,7 +328,10 @@ export const translations = {
     autoAdvance: "स्वचालित प्रगति",
     cancel: "रद्द करें",
     saveSettings: "सेटिंग्स सहेजें",
-    settings: "सेटिंग्स"
+    settings: "सेटिंग्स",
+    back: "वापस",
+    selectLevel: "स्तर चुनें",
+    levelDescription: "अपना शुरुआती स्तर चुनें:"
   },
   sw: {
     title: "Mazoezi ya Kutoa",
@@ -325,7 +358,10 @@ export const translations = {
     autoAdvance: "Maendeleo ya kiotomatiki",
     cancel: "Ghairi",
     saveSettings: "Hifadhi Mipangilio",
-    settings: "Mipangilio"
+    settings: "Mipangilio",
+    back: "Rudi",
+    selectLevel: "Chagua Kiwango",
+    levelDescription: "Chagua kiwango chako cha kuanza:"
   },
   am: {
     title: "የመቀነስ ልምምድ",
@@ -352,7 +388,10 @@ export const translations = {
     autoAdvance: "ራስ-ሰር ማሳደግ",
     cancel: "ሰርዝ",
     saveSettings: "ቅንብሮች አስቀምጥ",
-    settings: "ቅንብሮች"
+    settings: "ቅንብሮች",
+    back: "ተመለስ",
+    selectLevel: "ደረጃ ምረጥ",
+    levelDescription: "የመጀመሪያ ደረጃህን ምረጥ:"
   },
   yo: {
     title: "Adanwo Yiyokuro",
@@ -379,7 +418,10 @@ export const translations = {
     autoAdvance: "Ilọsiwaju adaṣe",
     cancel: "Fagilee",
     saveSettings: "Fi Awọn Eto Pamọ",
-    settings: "Awọn Eto"
+    settings: "Awọn Eto",
+    back: "Pada",
+    selectLevel: "Yan Ipele",
+    levelDescription: "Yan ipele ibere rẹ:"
   },
   zu: {
     title: "Ukuzilolonga Kokuphakamisa",
@@ -406,7 +448,10 @@ export const translations = {
     autoAdvance: "Ukuqhubeka ngokuzenzakalelayo",
     cancel: "Khansela",
     saveSettings: "Londoloza Izilungiselelo",
-    settings: "Izilungiselelo"
+    settings: "Izilungiselelo",
+    back: "Buyela",
+    selectLevel: "Khetha Izinga",
+    levelDescription: "Khetha izinga lakho lokuqala:"
   },
   ar: {
     title: "تمارين الطرح",
@@ -433,7 +478,10 @@ export const translations = {
     autoAdvance: "التقدم التلقائي",
     cancel: "إلغاء",
     saveSettings: "حفظ الإعدادات",
-    settings: "الإعدادات"
+    settings: "الإعدادات",
+    back: "رجوع",
+    selectLevel: "اختر المستوى",
+    levelDescription: "اختر مستوى البداية:"
   },
   af: {
     title: "Aftrek Oefening",
@@ -460,7 +508,10 @@ export const translations = {
     autoAdvance: "Outomatiese vordering",
     cancel: "Kanselleer",
     saveSettings: "Stoor Instellings",
-    settings: "Instellings"
+    settings: "Instellings",
+    back: "Terug",
+    selectLevel: "Kies Vlak",
+    levelDescription: "Kies jou begin vlak:"
   },
   xh: {
     title: "Ukuziqhelanisa Nokuthabatha",
@@ -487,7 +538,10 @@ export const translations = {
     autoAdvance: "Ukuqhubela phambili ngokuzenzekelayo",
     cancel: "Rhoxisa",
     saveSettings: "Gcina Izicwangciso",
-    settings: "Izicwangciso"
+    settings: "Izicwangciso",
+    back: "Buyela",
+    selectLevel: "Khetha Inqanaba",
+    levelDescription: "Khetha inqanaba lakho lokuqala:"
   },
   st: {
     title: "Boitloaelo ba ho Tlosoa",
@@ -514,7 +568,10 @@ export const translations = {
     autoAdvance: "Tsoelo-pele ea boithaopi",
     cancel: "Hlakola",
     saveSettings: "Boloka Litlhophiso",
-    settings: "Litlhophiso"
+    settings: "Litlhophiso",
+    back: "Khutla",
+    selectLevel: "Khetha Boemo",
+    levelDescription: "Khetha boemo ba hao ba ho qala:"
   }
 };
 

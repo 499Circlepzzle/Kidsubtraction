@@ -30,27 +30,39 @@ export default function Game() {
   const [showingScore, setShowingScore] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [difficultySettings, setDifficultySettings] = useState(DEFAULT_DIFFICULTY);
+  const [selectedTest, setSelectedTest] = useState<SubtractionTest | null>(null);
 
   const resetGame = useCallback(() => {
     setGameState(undefined);
     setShowingScore(false);
+    setSelectedTest(null);
     setLocation('/');
   }, [setLocation]);
+
+  const handleTestSelection = (test: SubtractionTest) => {
+    setSelectedTest(test);
+  };
+
+  const handleBackToTestSelection = () => {
+    setSelectedTest(null);
+  };
 
   const handleSaveSettings = (newSettings: DifficultySettings) => {
     setDifficultySettings(newSettings);
     setShowSettings(false);
   };
 
-  const startGame = (test: SubtractionTest) => {
+  const startGame = (test: SubtractionTest, startLevel: GameLevel = 1) => {
     try {
       const state = getInitialGameState(test, difficultySettings);
       const problem = generateProblem(test, []);
       setGameState({
         ...state,
+        level: startLevel,
         currentProblem: problem,
         gameStarted: true,
-        usedNumbers: [problem.first]
+        usedNumbers: [problem.first],
+        timeLeft: getTimeForLevel(startLevel, difficultySettings)
       });
       if (difficultySettings.voiceEnabled) {
         speak(`${problem.first} ${t('minus')} ${problem.second}`, language);
@@ -168,6 +180,39 @@ export default function Game() {
               onSave={handleSaveSettings}
               onCancel={() => setShowSettings(false)}
             />
+          ) : selectedTest ? (
+            <>
+              <div className="flex items-center justify-between mb-6">
+                <Button variant="outline" onClick={handleBackToTestSelection}>
+                  ← {t('back')}
+                </Button>
+                <h2 className="text-2xl font-bold">{t('minus')} {selectedTest}</h2>
+              </div>
+              <h3 className="text-lg mb-4">{t('selectLevel')}</h3>
+              <div className="grid grid-cols-3 gap-4">
+                {Array.from({ length: 6 }, (_, i) => i + 1).map((level) => (
+                  <Button
+                    key={level}
+                    onClick={() => startGame(selectedTest, level as GameLevel)}
+                    size="lg"
+                    className="text-xl h-16 text-black hover:text-black"
+                  >
+                    {t('level')} {level}
+                  </Button>
+                ))}
+              </div>
+              <div className="mt-6 text-sm text-gray-600">
+                <p>{t('levelDescription')}</p>
+                <div className="grid grid-cols-2 gap-2 mt-2">
+                  {Array.from({ length: 6 }, (_, i) => i + 1).map((level) => (
+                    <div key={level} className="flex justify-between">
+                      <span>{t('level')} {level}:</span>
+                      <span>{getTimeForLevel(level as GameLevel, difficultySettings)} {t('seconds')}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
           ) : (
             <>
               <h1 className="text-4xl font-bold mb-8">{t('title')}</h1>
@@ -175,7 +220,7 @@ export default function Game() {
                 {Array.from({ length: 9 }, (_, i) => i + 1).map((num) => (
                   <Button
                     key={num}
-                    onClick={() => startGame(num as SubtractionTest)}
+                    onClick={() => handleTestSelection(num as SubtractionTest)}
                     size="lg"
                     className="text-xl h-16 text-black hover:text-black"
                   >
